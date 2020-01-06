@@ -1,0 +1,12 @@
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var singleNumber = function(nums) {
+    
+    var s = 0;
+    for(var i=0;i<nums.length;i++){
+        s = s^nums[i];
+    }
+    return s;
+};

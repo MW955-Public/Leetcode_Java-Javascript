@@ -1,0 +1,19 @@
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var climbStairs = function(n) {
+    var temp,l1, l2, sum;
+    temp=sum=0;
+    l1=l2=1;
+    for (let i=0; i*2<= n; i++){
+        temp=i+n-2*i;
+        for(let j=0; j< i; j++){
+            l1= (temp-j)*l1;
+            l2= l2*(i-j);
+        }
+        sum = (l1/l2)+sum;
+        l1=l2=1;
+    }
+    return sum;
+};
