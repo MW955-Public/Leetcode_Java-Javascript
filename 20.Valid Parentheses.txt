@@ -1,0 +1,18 @@
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isValid = function(s) {
+    var line = [];
+    for (let i=0; i<s.length; i++){
+        if(line.length<1){
+            line.push(s[i]);
+        }
+        else if(line[line.length-1]=="["&&s[i]=="]" || line[line.length-1]=="{"&&s[i]=="}" || line[line.length-1]=="("&&s[i]==")"){
+            line.pop();
+        }else{
+            line.push(s[i]);
+        }
+    }
+    return line.length<1;
+};

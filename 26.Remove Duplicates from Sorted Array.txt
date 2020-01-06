@@ -1,0 +1,21 @@
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var removeDuplicates = function(nums) {
+    var flag = nums[0];
+    var temp= nums;
+    var long = 1;
+    var counter =1;
+    while(long<temp.length){
+        if(temp[long]!= flag){
+            counter++;
+            flag= temp[long];
+            nums[counter-1]=flag;
+           
+        }
+        long++;
+    }
+    return counter;
+    
+};
