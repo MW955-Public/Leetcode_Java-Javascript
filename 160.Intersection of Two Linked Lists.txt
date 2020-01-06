@@ -1,0 +1,29 @@
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+
+/**
+ * @param {ListNode} headA
+ * @param {ListNode} headB
+ * @return {ListNode}
+ */
+// 1)由于双链长度互补,所以在第二轮从交换链表出发后必同时走到相交的节点
+// 2)若是双链长度相等且有相交节点,第一轮即找出相交节点
+// 3)若是长度相同的链表不相交,第一轮跑完即会pA==pB==null
+// 4)若是长度不同且不相交的链表,也是由于双链长度互补,第二轮双链将同时走至null
+var getIntersectionNode = function(headA, headB) {
+    if(headA == null || headB == null){
+        return null;
+    }
+    var pA = headA;
+    var pB = headB;
+    while(pA != pB) {
+        pA = pA == null ? headB : pA.next;
+        pB = pB == null ? headA : pB.next;
+    }
+    return pA;
+};
