@@ -1,0 +1,32 @@
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+var threeSumClosest = function(nums, target) {
+    var len = nums.length;
+    nums.sort((a, b) => a - b);
+    var min = nums[0]+nums[1]+nums[nums.length-1];
+    var temp=0;
+    console.log(nums);
+    for (let i=0; i<len; i++){
+        if(i>0&&nums[i]==nums[i-1])continue;
+        let L=i+1;
+        let R=len-1;
+        while(L<R){
+            temp=nums[i] + nums[L] + nums[R];
+            
+            while (L<R && nums[R] == nums[R-1]) R--; // 去重
+            
+            if(Math.abs(temp-target)<Math.abs(min-target)){
+            min = temp;
+            }
+            if(temp===target)return min;
+            else if(temp<target)L++;
+            else if(temp>target)R--;
+        }
+    }
+    return min;
+
+    
+};
